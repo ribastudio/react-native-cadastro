@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
-import { Metrics, Colors } from '../values';
 import { MyButton, MyTextInput, MyPasswordInput } from '../components';
+import { Metrics, Colors } from '../values';
 
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -11,10 +11,10 @@ export default props => {
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [continent, setContinent] = useState('continente');
+  const [continent, setContinent] = useState('');
   const [password, setPassword] = useState('');
-  const continentList = [
-    'América do Norte',
+  
+  const continentList = ['América do Norte',
     'América central',
     'América do Sul',
     'Europa',
@@ -25,7 +25,7 @@ export default props => {
   ];
 
   async function createUser() {
-    if(name =='' | lastName == '' || email == ''|| continent == '' || password == '') {
+    if(name =='' || lastName == '' || email == ''|| continent == '' || password == '') {
       alert('Preencha todos os campos')
       return
     }
@@ -33,7 +33,7 @@ export default props => {
     const user = {
       name: name,
       lastName: lastName,
-      email: email,
+      email: email.toLowerCase(),
       continent: continent,
       password: password
     }
@@ -63,23 +63,23 @@ export default props => {
       </View>
       <View style={ styles.containerForm }>
         <MyTextInput
-          placeholder='Nome'
           style={ styles.formItem }
+          placeholder='Insira seu nome'
           value={name}
-          onChange={name => setName(name)}
+          onChange={text => setName(text)}
         />
         <MyTextInput
-          placeholder='Sobrenome'
           style={ styles.formItem }
+          placeholder='Insira seu sobrenome'
           value={lastName}
-          onChange={lastName => setLastName(lastName)}
+          onChange={text => setLastName(text)}
         />
         <MyTextInput
-          placeholder='e-mail'
+          placeholder='Insira seu e-mail'
           style={ styles.formItem }
           keyboardType='email-address'
           value={email}
-          onChange={email => setEmail(email)}
+          onChange={text => setEmail(text)}
         />
         <View style={ [styles.pickerContainer, styles.formItem ] }>
           <Picker 
@@ -87,17 +87,18 @@ export default props => {
             selectedValue={continent}
             onValueChange={(value) => setContinent(value)}
           >
-            {continentList.map((continent, i) => (
-              <Picker.item key={i} value={continent} label={continent} />
-              )
+            <Picker.Item value="" label="Escolha seu continente" />
+            {
+              continentList.map((continent, i) => (
+                <Picker.item key={i} value={continent} label={continent} />)
             )}
           </Picker>
         </View>
         <MyPasswordInput
-          placeholder='Senha'
+          placeholder='Insira sua senha'
           style={ styles.formItem } 
           value={password}
-          onChange={password => setPassword(password)}
+          onChange={text => setPassword(text)}
         />
         <MyButton 
           title='Cadastrar'

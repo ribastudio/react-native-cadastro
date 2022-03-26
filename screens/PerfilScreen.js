@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { Colors, Metrics, Fonts } from '../values';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MyButton } from '../components';
@@ -11,8 +11,8 @@ export default props => {
   const [email, setEmail] = useState('')
   const [continent, setContinent] = useState('')
   
-  console.log(Object.keys(props));
-  console.log(Object.keys(props.route.params));
+  // console.log(Object.keys(props));
+  // console.log(Object.keys(props.route.params));
 
   useEffect(() => {
     loadUserData();
@@ -32,6 +32,22 @@ export default props => {
       console.log(error);
     }
     
+  }
+
+  function confirmExit() {
+    Alert.alert('Sair', 'Deseja realmente sair?', [
+      {
+        text: 'Sim',
+        onPress(){
+          props.navigation.reset({
+            index: 0,
+            routes: [ {name: 'LoginScreen'} ]
+          })
+        } 
+      },{
+        text: 'Não'
+      }
+    ])
   }
 
   return(
@@ -55,10 +71,12 @@ export default props => {
         <MyButton 
           title="site cellep"
           style={ styles.formItem }
+          onPress={() => props.navigation.navigate('WebScreen')}
         />
         <MyButton 
           title="sair"
           style={ styles.formItem }
+          onPress={confirmExit}
         />
       </View>
       

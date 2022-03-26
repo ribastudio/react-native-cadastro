@@ -13,6 +13,7 @@ import { Colors } from "../values";
 const Stack = createNativeStackNavigator();
 
 export default props => {
+
   return (
     <Stack.Navigator
       initialRouteName="LoginScreen"
