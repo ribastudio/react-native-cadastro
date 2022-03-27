@@ -26,11 +26,11 @@
 
 <!-- Status -->
 
-<!-- <h4 align="center"> 
+<h4 align="center"> 
 	🚧  Routes By Tabs 🚀 Under construction...  🚧
 </h4> 
 
-<hr> -->
+<hr> 
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
@@ -46,13 +46,13 @@
 
 ## :dart: About ##
 
-Describe your project
+First project in React Native, using stack routing system, Async Storage, webView and pure styles from React Native. The challenges for refactoring are implement Styled Components, UX/UI replanning, bundle the app for iOS, Android, TypeScript and form validation to each field. Project in progress, part of React Native express training course, made by Estação Hack São Paulo/Facebook
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Implement routes by stack;\
+:heavy_check_mark: Use Async Storage to persist data;\
+:heavy_check_mark: Use the picker properties to make a combo box form component;
 
 ## :rocket: Technologies ##
 
