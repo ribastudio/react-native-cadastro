@@ -80,8 +80,11 @@ $ cd routes-by-tabs
 # Install dependencies
 $ yarn
 
+# Install Expo-cli
+$ yarn global add expo-cli
+
 # Run the project
-$ yarn start
+$ expo start
 
 # The server will initialize in the <http://localhost:3000>
 ```
