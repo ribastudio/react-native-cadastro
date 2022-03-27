@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, Alert } from 'react-native';
 import { MyButton, MyTextInput, MyPasswordInput } from '../components';
 import { Metrics, Colors } from '../values';
 
@@ -25,8 +25,8 @@ export default props => {
   ];
 
   async function createUser() {
-    if(name =='' || lastName == '' || email == ''|| continent == '' || password == '') {
-      alert('Preencha todos os campos')
+    if(name == '' || lastName == '' || email == ''|| continent == '' || password == '') {
+      Alert.alert('Dado não inserido', 'Preencha todos os campos', [{text: 'OK'}])
       return
     }
     
@@ -66,20 +66,20 @@ export default props => {
           style={ styles.formItem }
           placeholder='Insira seu nome'
           value={name}
-          onChange={text => setName(text)}
+          onChangeText={text => setName(text)}
         />
         <MyTextInput
           style={ styles.formItem }
           placeholder='Insira seu sobrenome'
           value={lastName}
-          onChange={text => setLastName(text)}
+          onChangeText={text => setLastName(text)}
         />
         <MyTextInput
           placeholder='Insira seu e-mail'
           style={ styles.formItem }
           keyboardType='email-address'
           value={email}
-          onChange={text => setEmail(text)}
+          onChangeText={text => setEmail(text)}
         />
         <View style={ [styles.pickerContainer, styles.formItem ] }>
           <Picker 
@@ -90,7 +90,7 @@ export default props => {
             <Picker.Item value="" label="Escolha seu continente" />
             {
               continentList.map((continent, i) => (
-                <Picker.item key={i} value={continent} label={continent} />)
+                <Picker.Item key={i} value={continent} label={continent} />)
             )}
           </Picker>
         </View>
@@ -98,7 +98,7 @@ export default props => {
           placeholder='Insira sua senha'
           style={ styles.formItem } 
           value={password}
-          onChange={text => setPassword(text)}
+          onChangeText={text => setPassword(text)}
         />
         <MyButton 
           title='Cadastrar'

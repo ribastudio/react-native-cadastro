@@ -3,10 +3,10 @@ import { TextInput, StyleSheet } from 'react-native';
 import { Metrics, Colors } from '../values';
 
 export default props => {
-  const { style, ...rest } = props
+  const {style, ...rest} = props;
   return(
     <TextInput style={ [ styles.input, style ] } 
-              { ...rest }
+              {...rest}
     >
     </TextInput>
   )
